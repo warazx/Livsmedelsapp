@@ -10,6 +10,8 @@ import UIKit
 
 class MainViewController: UIViewController {
 
+    @IBOutlet weak var searchField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,14 +24,18 @@ class MainViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "SearchSegue", let destination = segue.destination as? FoodTableViewController {
+            if let searchText = searchField.text {
+                destination.searchString = searchText
+            }
+        }
     }
-    */
 
 }

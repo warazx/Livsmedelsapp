@@ -9,9 +9,15 @@
 import UIKit
 
 class FoodDetailViewController: UIViewController {
+    
+    @IBOutlet weak var foodName: UILabel!
+    var name : String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+            
+        foodName.text = name
 
         // Do any additional setup after loading the view.
     }

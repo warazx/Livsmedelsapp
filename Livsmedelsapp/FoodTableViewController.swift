@@ -7,11 +7,32 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class FoodTableViewController: UITableViewController {
+    
+    var foods : [Food] = []
+    var searchString : String = ""
+    var matURLquery = "http://www.matapi.se/foodstuff?query="
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = searchString
+        
+        if let url = URL(string: (matURLquery + searchString)) {
+            if let data = try? Data(contentsOf: url) {
+                let jsonData = JSON(data: data)
+                
+                for food in jsonData.arrayValue {
+                    let name = food["name"].stringValue
+                    let id = food["id"].intValue
+                    foods.append(Food(name: name, id: id, value: 0.0))
+                }
+                
+            }
+        }
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -29,67 +50,39 @@ class FoodTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return foods.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell:FoodTableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! FoodTableViewCell
 
-        // Configure the cell...
+        cell.foodName.text = foods[indexPath.row].name
+        cell.foodValue.text = String(foods[indexPath.row].value)
 
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "DetailSegue", let destination = segue.destination as? FoodDetailViewController {
+            if let cell = sender as? FoodTableViewCell, let indexPath = tableView.indexPath(for: cell) {
+                let food = foods[indexPath.row].name
+                destination.name = food
+            }
+        }
+        
     }
-    */
+ 
 
 }
