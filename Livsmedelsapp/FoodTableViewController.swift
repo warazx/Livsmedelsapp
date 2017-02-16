@@ -13,7 +13,9 @@ class FoodTableViewController: UITableViewController {
     
     var foods : [Food] = []
     var searchString : String = ""
-    var matURLquery = "http://www.matapi.se/foodstuff?query="
+    let matURLquery = "http://www.matapi.se/foodstuff?query="
+    let detailURLquery = "http://www.matapi.se/foodstuff/"
+    let suffixQuery = "?nutrient=energyKcal"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,12 +24,20 @@ class FoodTableViewController: UITableViewController {
         
         if let url = URL(string: (matURLquery + searchString)) {
             if let data = try? Data(contentsOf: url) {
-                let jsonData = JSON(data: data)
+                let json = JSON(data: data)
                 
-                for food in jsonData.arrayValue {
+                for food in json.arrayValue {
                     let name = food["name"].stringValue
-                    let id = food["id"].intValue
-                    foods.append(Food(name: name, id: id, value: 0.0))
+                    let id = food["number"].intValue
+                    
+                    if let detailUrl = URL(string: (detailURLquery + "\(id)" + suffixQuery)) {
+                        if let detailData = try? Data(contentsOf: detailUrl) {
+                            let detailJson = JSON(data: detailData)
+                            
+                            let detailFood = detailJson["nutrientValues"]["energyKcal"].doubleValue
+                            foods.append(Food(name: name, id: id, value: detailFood))
+                        }
+                    }
                 }
                 
             }
