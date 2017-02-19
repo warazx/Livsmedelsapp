@@ -7,18 +7,36 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class FoodDetailViewController: UIViewController {
     
     @IBOutlet weak var foodName: UILabel!
-    var name : String?
+    @IBOutlet weak var kcalValue: UILabel!
+    @IBOutlet weak var proteinValue: UILabel!
+    @IBOutlet weak var fatValue: UILabel!
+    @IBOutlet weak var kolhydraterValue: UILabel!
+    
+    var id : Int = 0
+    let searchString = "http://www.matapi.se/foodstuff/"
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let foodUrl = URL(string: (searchString + "\(id)")) {
+            if let foodData = try? Data(contentsOf: foodUrl) {
+                let foodJson = JSON(data: foodData)
+                
+                foodName.text = foodJson["name"].stringValue
+                let foodNutrients = foodJson["nutrientValues"]
+                kcalValue.text = String(foodNutrients["energyKcal"].doubleValue)
+                proteinValue.text = String(foodNutrients["protein"].doubleValue)
+                fatValue.text = String(foodNutrients["fat"].doubleValue)
+                kolhydraterValue.text = String(foodNutrients["carbohydrates"].doubleValue)
+            }
+        }
 
-            
-        foodName.text = name
-
+        
         // Do any additional setup after loading the view.
     }
 

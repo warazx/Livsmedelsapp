@@ -22,6 +22,17 @@ class FoodTableViewController: UITableViewController {
         
         self.title = searchString
         
+        callApi()
+
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func callApi() {
+        //TODO: ÅÄÖ fungerar ej - implementera URLSession? - Tom sökning krashar
         if let url = URL(string: (matURLquery + searchString)) {
             if let data = try? Data(contentsOf: url) {
                 let json = JSON(data: data)
@@ -39,16 +50,8 @@ class FoodTableViewController: UITableViewController {
                         }
                     }
                 }
-                
             }
         }
-        
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -87,8 +90,8 @@ class FoodTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
         if segue.identifier == "DetailSegue", let destination = segue.destination as? FoodDetailViewController {
             if let cell = sender as? FoodTableViewCell, let indexPath = tableView.indexPath(for: cell) {
-                let food = foods[indexPath.row].name
-                destination.name = food
+                let id = foods[indexPath.row].id
+                destination.id = id
             }
         }
         
