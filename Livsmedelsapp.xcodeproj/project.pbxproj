@@ -16,6 +16,7 @@
 		0E3A044A1E53311000976CA1 /* FoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3A04491E53311000976CA1 /* FoodTableViewCell.swift */; };
 		0E3A044C1E5334C300976CA1 /* FoodDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3A044B1E5334C300976CA1 /* FoodDetailViewController.swift */; };
 		0E3A044E1E5347A900976CA1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3A044D1E5347A900976CA1 /* MainViewController.swift */; };
+		0E3A04921E5B19B700976CA1 /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3A04911E5B19B700976CA1 /* ApiHelper.swift */; };
 		5AB0E07593B92939D83385EA /* Pods_Livsmedelsapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13C46418E22834FCA22CB311 /* Pods_Livsmedelsapp.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +33,7 @@
 		0E3A044B1E5334C300976CA1 /* FoodDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodDetailViewController.swift; sourceTree = "<group>"; };
 		0E3A044D1E5347A900976CA1 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		0E3A048F1E54D99600976CA1 /* SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Pods/SwiftyJSON/Source/SwiftyJSON.swift; sourceTree = "<group>"; };
+		0E3A04911E5B19B700976CA1 /* ApiHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiHelper.swift; sourceTree = "<group>"; };
 		13C46418E22834FCA22CB311 /* Pods_Livsmedelsapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Livsmedelsapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		53EA13D0F9E7170FDA1418D3 /* Pods-Livsmedelsapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Livsmedelsapp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Livsmedelsapp/Pods-Livsmedelsapp.debug.xcconfig"; sourceTree = "<group>"; };
 		99CFBB68A706C3478E899F59 /* Pods-Livsmedelsapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Livsmedelsapp.release.xcconfig"; path = "Pods/Target Support Files/Pods-Livsmedelsapp/Pods-Livsmedelsapp.release.xcconfig"; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				0E3A04451E532BC600976CA1 /* FoodTableViewController.swift */,
 				0E3A04491E53311000976CA1 /* FoodTableViewCell.swift */,
 				0E3A04471E532D7E00976CA1 /* Food.swift */,
+				0E3A04911E5B19B700976CA1 /* ApiHelper.swift */,
 				0E3A04371E530B8F00976CA1 /* Main.storyboard */,
 				0E3A043A1E530B8F00976CA1 /* Assets.xcassets */,
 				0E3A043C1E530B8F00976CA1 /* LaunchScreen.storyboard */,
@@ -232,6 +235,7 @@
 				0E3A044E1E5347A900976CA1 /* MainViewController.swift in Sources */,
 				0E3A044C1E5334C300976CA1 /* FoodDetailViewController.swift in Sources */,
 				0E3A04481E532D7E00976CA1 /* Food.swift in Sources */,
+				0E3A04921E5B19B700976CA1 /* ApiHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

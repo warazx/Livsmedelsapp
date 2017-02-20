@@ -7,23 +7,23 @@
 //
 
 import UIKit
-import SwiftyJSON
 
 class FoodTableViewController: UITableViewController {
     
     var foods : [Food] = []
+    let apiHelper = ApiHelper()
     var searchString : String = ""
-    let matURLquery = "http://www.matapi.se/foodstuff?query="
-    let detailURLquery = "http://www.matapi.se/foodstuff/"
-    let suffixQuery = "?nutrient=energyKcal"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = searchString
         
-        callApi()
-
+        apiHelper.getFoodsFrom(search: searchString) {(apiFoods :[Food]) -> Void in
+            self.foods = apiFoods
+            self.tableView.reloadData()
+        }
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -31,29 +31,6 @@ class FoodTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    func callApi() {
-        //TODO: ÅÄÖ fungerar ej - implementera URLSession? - Tom sökning krashar
-        if let url = URL(string: (matURLquery + searchString)) {
-            if let data = try? Data(contentsOf: url) {
-                let json = JSON(data: data)
-                
-                for food in json.arrayValue {
-                    let name = food["name"].stringValue
-                    let id = food["number"].intValue
-                    
-                    if let detailUrl = URL(string: (detailURLquery + "\(id)" + suffixQuery)) {
-                        if let detailData = try? Data(contentsOf: detailUrl) {
-                            let detailJson = JSON(data: detailData)
-                            
-                            let detailFood = detailJson["nutrientValues"]["energyKcal"].doubleValue
-                            foods.append(Food(name: name, id: id, value: detailFood))
-                        }
-                    }
-                }
-            }
-        }
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
