@@ -26,6 +26,19 @@ class MainViewController: UIViewController {
 
     
     // MARK: - Navigation
+    
+    override func shouldPerformSegue(withIdentifier identifier: String?, sender: Any?) -> Bool {
+        if let ident = identifier {
+            if ident == "SearchSegue" {
+                if (searchField.text?.characters.count)! < 2 {
+                    searchField.text = ""
+                    searchField.placeholder = "Minst två tecken"
+                    return false
+                }
+            }
+        }
+        return true
+    }
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
