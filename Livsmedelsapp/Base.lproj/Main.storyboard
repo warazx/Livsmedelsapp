@@ -257,9 +257,19 @@
                             <constraint firstItem="gv0-TK-Yjo" firstAttribute="top" secondItem="dHA-lo-xve" secondAttribute="bottom" constant="8" id="x2D-tx-7qq"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="XAv-GA-JRM"/>
+                    <navigationItem key="navigationItem" id="XAv-GA-JRM">
+                        <nil key="title"/>
+                        <switch key="titleView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="KEo-Os-esu">
+                            <rect key="frame" x="135" y="7" width="51" height="31"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <connections>
+                                <action selector="favoriteSwitch:" destination="tGY-Tw-Qpb" eventType="valueChanged" id="uKO-zf-5ah"/>
+                            </connections>
+                        </switch>
+                    </navigationItem>
                     <connections>
                         <outlet property="fatValue" destination="gQE-WT-ijK" id="GXP-nk-ada"/>
+                        <outlet property="favoriteSwitch" destination="KEo-Os-esu" id="Vpw-7q-hAz"/>
                         <outlet property="foodName" destination="dHA-lo-xve" id="cRO-2x-YyT"/>
                         <outlet property="kcalValue" destination="8wy-oV-Y1a" id="fqz-j4-Nob"/>
                         <outlet property="kolhydraterValue" destination="lFg-cb-PQE" id="ZhM-Pb-wnb"/>

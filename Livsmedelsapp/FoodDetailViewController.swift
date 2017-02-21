@@ -11,6 +11,7 @@ import SwiftyJSON
 
 class FoodDetailViewController: UIViewController {
     
+    @IBOutlet weak var favoriteSwitch: UISwitch!
     @IBOutlet weak var foodName: UILabel!
     @IBOutlet weak var kcalValue: UILabel!
     @IBOutlet weak var proteinValue: UILabel!
@@ -20,7 +21,7 @@ class FoodDetailViewController: UIViewController {
     var id : Int = 0
     var detailedFood : Food = Food(name: "")
     let apiHelper = ApiHelper()
-    let searchString = "http://www.matapi.se/foodstuff/"
+    let savedOptions = SavedOptions()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,10 +30,19 @@ class FoodDetailViewController: UIViewController {
             self.detailedFood = $0
             DispatchQueue.main.async(execute: {
                 self.updateText()
+                self.isFavorited()
             })
         }
         
         // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func favoriteSwitch(_ sender: UISwitch) {
+        if sender.isOn {
+            savedOptions.saveToFavorites(id: detailedFood.id)
+        } else {
+            savedOptions.removeFromFavorites(id: detailedFood.id)
+        }
     }
     
     func updateText() {
@@ -41,6 +51,14 @@ class FoodDetailViewController: UIViewController {
         proteinValue.text = String(detailedFood.protein)
         fatValue.text = String(detailedFood.fat)
         kolhydraterValue.text = String(detailedFood.carbo)
+    }
+    
+    func isFavorited() {
+        if savedOptions.isFavorite(id: detailedFood.id) {
+            favoriteSwitch.setOn(true, animated: false)
+        } else {
+            favoriteSwitch.setOn(false, animated: false)
+        }
     }
 
     override func didReceiveMemoryWarning() {
