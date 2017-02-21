@@ -25,13 +25,59 @@ class ApiHelper {
                     for food in jsonData.arrayValue {
                         let name = food["name"].stringValue
                         let id = food["number"].intValue
+                        
                         apiFoods.append(Food(name: name, id: id))
-                        NSLog("Added \(name) #\(apiFoods.count)")
                     }
                 }
                 onDataFunc(apiFoods)
             }
             task.resume()
+        }
+    }
+    
+    func getKcalForId(id: Int, onDataFunc: @escaping (Double) -> Void) {
+        
+        if let detailURL = URL(string: "http://www.matapi.se/foodstuff/\(id)?nutrient=energyKcal") {
+            let detailRequest = URLRequest(url: detailURL)
+            let detailTask = URLSession.shared.dataTask(with: detailRequest) {
+                (data : Data?, response : URLResponse?, error : Error?) in
+                if let detailUnwrappedData = data {
+                    let detailJSONData = JSON(data: detailUnwrappedData)
+                    
+                    let detailDict = detailJSONData.dictionaryValue["nutrientValues"]
+                    
+                    if let kcal = detailDict?["energyKcal"].doubleValue {
+                        onDataFunc(kcal)
+                    }
+                }
+            }
+            detailTask.resume()
+        }
+    }
+    
+    func getFoodFromId(_ id: Int, onDataFunc: @escaping (Food) -> Void) {
+        let detailedFood = Food(name: "")
+        
+        if let detailURL = URL(string: "http://www.matapi.se/foodstuff/\(id)") {
+            let detailRequest = URLRequest(url: detailURL)
+            let detailTask = URLSession.shared.dataTask(with: detailRequest) {
+                (data : Data?, response : URLResponse?, error : Error?) in
+                if let detailUnwrappedData = data {
+                    let detailJSONData = JSON(data: detailUnwrappedData)
+                    
+                    if let foodJSON = detailJSONData.dictionary {
+                        detailedFood.id = Int(foodJSON["number"]!.doubleValue)
+                        detailedFood.name = (foodJSON["name"]?.stringValue)!
+                        let nutrientValues = foodJSON["nutrientValues"]?.dictionaryValue
+                        detailedFood.value = (nutrientValues?["energyKcal"]?.doubleValue)!
+                        detailedFood.protein = (nutrientValues?["protein"]?.doubleValue)!
+                        detailedFood.fat = (nutrientValues?["fat"]?.doubleValue)!
+                        detailedFood.carbo = (nutrientValues?["carbohydrates"]?.doubleValue)!
+                    }
+                }
+                onDataFunc(detailedFood)
+            }
+            detailTask.resume()
         }
     }
 }

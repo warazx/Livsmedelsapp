@@ -9,9 +9,13 @@
 import Foundation
 
 class Food {
-    let name : String
-    let id : Int
-    let value : Double
+    var name : String
+    var id : Int
+    var value : Double
+    var protein : Double = 0
+    var fat : Double = 0
+    var carbo : Double = 0
+    
     
     init(name: String, id: Int = 0, value: Double = 0) {
         self.name = name

@@ -18,26 +18,29 @@ class FoodDetailViewController: UIViewController {
     @IBOutlet weak var kolhydraterValue: UILabel!
     
     var id : Int = 0
+    var detailedFood : Food = Food(name: "")
+    let apiHelper = ApiHelper()
     let searchString = "http://www.matapi.se/foodstuff/"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let foodUrl = URL(string: (searchString + "\(id)")) {
-            if let foodData = try? Data(contentsOf: foodUrl) {
-                let foodJson = JSON(data: foodData)
-                
-                foodName.text = foodJson["name"].stringValue
-                let foodNutrients = foodJson["nutrientValues"]
-                kcalValue.text = String(foodNutrients["energyKcal"].doubleValue)
-                proteinValue.text = String(foodNutrients["protein"].doubleValue)
-                fatValue.text = String(foodNutrients["fat"].doubleValue)
-                kolhydraterValue.text = String(foodNutrients["carbohydrates"].doubleValue)
-            }
+        apiHelper.getFoodFromId(id) {
+            self.detailedFood = $0
+            DispatchQueue.main.async(execute: {
+                self.updateText()
+            })
         }
-
         
         // Do any additional setup after loading the view.
+    }
+    
+    func updateText() {
+        foodName.text = detailedFood.name
+        kcalValue.text = String(detailedFood.value)
+        proteinValue.text = String(detailedFood.protein)
+        fatValue.text = String(detailedFood.fat)
+        kolhydraterValue.text = String(detailedFood.carbo)
     }
 
     override func didReceiveMemoryWarning() {
