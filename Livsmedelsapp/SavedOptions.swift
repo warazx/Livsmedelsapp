@@ -48,6 +48,16 @@ class SavedOptions {
         return false
     }
     
+    func getAllFavorites() -> [Int] {
+        let userDefaults = UserDefaults.standard
+        if let favArray = userDefaults.array(forKey: favorites) as! [Int]? {
+            return favArray
+        } else {
+            let favArray : [Int] = []
+            return favArray
+        }
+    }
+    
     /*func currentFavorites() {
         let userDefaults = UserDefaults.standard
         print("Current favorites:")

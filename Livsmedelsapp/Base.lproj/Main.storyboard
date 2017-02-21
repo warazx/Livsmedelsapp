@@ -24,20 +24,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h1o-Bj-gaj" userLabel="SpaceTop">
-                                <rect key="frame" x="16" y="72" width="288" height="184"/>
+                                <rect key="frame" x="16" y="72" width="288" height="168"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oq6-WY-12N" userLabel="SpaceButton">
+                                <rect key="frame" x="16" y="380" width="288" height="168"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="LcB-EZ-LzK">
-                                <rect key="frame" x="16" y="264" width="288" height="83"/>
+                                <rect key="frame" x="16" y="248" width="288" height="115"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="edn-qk-qGe">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="39"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="35"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nso-R7-IdC">
-                                        <rect key="frame" x="0.0" y="44" width="288" height="39"/>
+                                        <rect key="frame" x="0.0" y="40" width="288" height="35"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <state key="normal" title="Sök">
@@ -47,15 +51,22 @@
                                             <segue destination="Isa-jq-wQk" kind="show" identifier="SearchSegue" id="oHc-5r-jSD"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pv-eI-OLe">
+                                        <rect key="frame" x="0.0" y="80" width="288" height="35"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="Visa Favoriter">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="Isa-jq-wQk" kind="show" identifier="FavoriteSegue" id="hkj-XF-iBN"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="LcB-EZ-LzK" secondAttribute="height" multiplier="288:83" id="6u2-LF-XUZ"/>
+                                    <constraint firstAttribute="width" secondItem="LcB-EZ-LzK" secondAttribute="height" multiplier="2.5:1" id="6u2-LF-XUZ"/>
                                 </constraints>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oq6-WY-12N" userLabel="SpaceButton">
-                                <rect key="frame" x="16" y="364" width="288" height="184"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -299,4 +310,7 @@
             <point key="canvasLocation" x="21" y="-136"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="hkj-XF-iBN"/>
+    </inferredMetricsTieBreakers>
 </document>

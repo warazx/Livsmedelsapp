@@ -47,7 +47,11 @@ class MainViewController: UIViewController {
         if segue.identifier == "SearchSegue", let destination = segue.destination as? FoodTableViewController {
             if let searchText = searchField.text {
                 destination.searchString = searchText
+                destination.favoriteMode = false
             }
+        }
+        if segue.identifier == "FavoriteSegue", let destination = segue.destination as? FoodTableViewController {
+            destination.favoriteMode = true
         }
     }
 

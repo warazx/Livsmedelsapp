@@ -17,6 +17,8 @@ class FoodTableViewController: UITableViewController, UISearchResultsUpdating {
     var searchString : String = ""
     var searchResult : [Food] = []
     var searchController : UISearchController!
+    var favoriteMode = false
+    let savedOptions = SavedOptions()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,22 +31,27 @@ class FoodTableViewController: UITableViewController, UISearchResultsUpdating {
         
         self.title = searchString
         
-        apiHelper.getFoodsFrom(search: searchString) {
-            self.foods = $0
-            for food in self.foods {
-                self.apiHelper.getKcalForId(id: food.id) {
-                    food.value = $0
+        if !favoriteMode {
+            apiHelper.getFoodsFrom(search: searchString) {
+                self.foods = $0
+                for food in self.foods {
+                    self.apiHelper.getKcalForId(id: food.id) {
+                        food.value = $0
+                        self.tableView.reloadData()
+                    }
+                }
+                self.tableView.reloadData()
+            }
+        } else {
+            let favoritesArray = savedOptions.getAllFavorites()
+            for favoriteID in favoritesArray {
+                apiHelper.getFoodFromId(favoriteID) {
+                    self.foods.append($0)
                     self.tableView.reloadData()
                 }
             }
-            self.tableView.reloadData()
         }
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     func updateSearchResults(for searchController: UISearchController) {
