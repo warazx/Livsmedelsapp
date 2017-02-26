@@ -105,7 +105,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="40"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cFT-mz-v6m" id="IT0-mc-vbQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="39"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eQS-p6-lrv">
@@ -166,12 +166,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dHA-lo-xve">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="dHA-lo-xve">
                                 <rect key="frame" x="16" y="72" width="288" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="5BP-ts-pwO"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -248,9 +248,24 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d8f-Kb-K0k">
-                                <rect key="frame" x="16" y="220" width="288" height="216"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PYe-HE-r48">
+                                <rect key="frame" x="16" y="220" width="288" height="35"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" secondItem="PYe-HE-r48" secondAttribute="height" multiplier="288:35" id="bLy-LI-Y8R"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Ta bild">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="takePicture:" destination="tGY-Tw-Qpb" eventType="touchUpInside" id="8tZ-N4-qZX"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d8f-Kb-K0k">
+                                <rect key="frame" x="16" y="263" width="288" height="216"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="d8f-Kb-K0k" secondAttribute="height" multiplier="4:3" id="nNL-U1-obi"/>
                                     <constraint firstAttribute="width" secondItem="d8f-Kb-K0k" secondAttribute="height" multiplier="4:3" id="x02-vC-W9z"/>
                                 </constraints>
                             </imageView>
@@ -258,14 +273,19 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="dHA-lo-xve" firstAttribute="trailing" secondItem="CMC-Uk-dbR" secondAttribute="trailingMargin" id="05O-Nl-Hzu"/>
+                            <constraint firstItem="d8f-Kb-K0k" firstAttribute="top" secondItem="PYe-HE-r48" secondAttribute="bottom" constant="8" symbolic="YES" id="4Ql-w4-iPt"/>
+                            <constraint firstItem="PYe-HE-r48" firstAttribute="top" secondItem="gv0-TK-Yjo" secondAttribute="bottom" constant="8" symbolic="YES" id="6Nc-bd-H7X"/>
                             <constraint firstItem="gv0-TK-Yjo" firstAttribute="leading" secondItem="CMC-Uk-dbR" secondAttribute="leadingMargin" id="7Ms-cL-GXp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gv0-TK-Yjo" secondAttribute="trailing" id="MoN-wg-cQ0"/>
-                            <constraint firstItem="d8f-Kb-K0k" firstAttribute="top" secondItem="gv0-TK-Yjo" secondAttribute="bottom" constant="8" symbolic="YES" id="Np8-27-KBU"/>
+                            <constraint firstItem="PYe-HE-r48" firstAttribute="trailing" secondItem="CMC-Uk-dbR" secondAttribute="trailingMargin" id="SPq-ze-I8c"/>
+                            <constraint firstItem="PYe-HE-r48" firstAttribute="leading" secondItem="CMC-Uk-dbR" secondAttribute="leadingMargin" id="aRG-2k-jyv"/>
+                            <constraint firstItem="d8f-Kb-K0k" firstAttribute="trailing" secondItem="CMC-Uk-dbR" secondAttribute="trailingMargin" id="bEf-fp-8mN"/>
                             <constraint firstItem="d8f-Kb-K0k" firstAttribute="leading" secondItem="CMC-Uk-dbR" secondAttribute="leadingMargin" id="cS0-GM-RQs"/>
+                            <constraint firstItem="d8f-Kb-K0k" firstAttribute="leading" secondItem="CMC-Uk-dbR" secondAttribute="leadingMargin" id="iJR-Ha-CVj"/>
                             <constraint firstItem="dHA-lo-xve" firstAttribute="leading" secondItem="CMC-Uk-dbR" secondAttribute="leadingMargin" id="pZG-cs-Sb5"/>
                             <constraint firstItem="d8f-Kb-K0k" firstAttribute="trailing" secondItem="CMC-Uk-dbR" secondAttribute="trailingMargin" id="pxe-OQ-OFY"/>
-                            <constraint firstItem="dHA-lo-xve" firstAttribute="top" secondItem="fhA-0l-SIH" secondAttribute="bottom" constant="8" id="wof-xP-Arf"/>
-                            <constraint firstItem="gv0-TK-Yjo" firstAttribute="top" secondItem="dHA-lo-xve" secondAttribute="bottom" constant="8" id="x2D-tx-7qq"/>
+                            <constraint firstItem="dHA-lo-xve" firstAttribute="top" secondItem="fhA-0l-SIH" secondAttribute="bottom" constant="8" symbolic="YES" id="wof-xP-Arf"/>
+                            <constraint firstItem="gv0-TK-Yjo" firstAttribute="top" secondItem="dHA-lo-xve" secondAttribute="bottom" constant="8" symbolic="YES" id="x2D-tx-7qq"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="XAv-GA-JRM">
@@ -281,6 +301,7 @@
                     <connections>
                         <outlet property="fatValue" destination="gQE-WT-ijK" id="GXP-nk-ada"/>
                         <outlet property="favoriteSwitch" destination="KEo-Os-esu" id="Vpw-7q-hAz"/>
+                        <outlet property="foodImage" destination="d8f-Kb-K0k" id="y6c-N8-B9J"/>
                         <outlet property="foodName" destination="dHA-lo-xve" id="cRO-2x-YyT"/>
                         <outlet property="kcalValue" destination="8wy-oV-Y1a" id="fqz-j4-Nob"/>
                         <outlet property="kolhydraterValue" destination="lFg-cb-PQE" id="ZhM-Pb-wnb"/>

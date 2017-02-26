@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-class FoodDetailViewController: UIViewController {
+class FoodDetailViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var favoriteSwitch: UISwitch!
     @IBOutlet weak var foodName: UILabel!
@@ -17,6 +17,7 @@ class FoodDetailViewController: UIViewController {
     @IBOutlet weak var proteinValue: UILabel!
     @IBOutlet weak var fatValue: UILabel!
     @IBOutlet weak var kolhydraterValue: UILabel!
+    @IBOutlet weak var foodImage: UIImageView!
     
     var id : Int = 0
     var detailedFood : Food = Food(name: "")
@@ -32,9 +33,63 @@ class FoodDetailViewController: UIViewController {
                 self.updateText()
                 self.isFavorited()
             })
+            self.loadImage()
+        }
+    }
+    
+    func loadImage() {
+        if let image = UIImage(contentsOfFile: imagePath) {
+            foodImage.image = image
+        } else {
+            NSLog("There is no image")
+        }
+    }
+    
+    @IBAction func takePicture(_ sender: UIButton) {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            picker.sourceType = .camera
+        } else if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
+            picker.sourceType = .savedPhotosAlbum
+        } else {
+            fatalError("No source type.")
         }
         
-        // Do any additional setup after loading the view.
+        present(picker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let image = info[UIImagePickerControllerEditedImage] as! UIImage
+        
+        if let data = UIImagePNGRepresentation(image) {
+            do {
+                let url = URL(fileURLWithPath: imagePath)
+                try data.write(to: url)
+            } catch let error {
+                NSLog("Failed to save image, error: \(error)")
+            }
+        }
+        
+        foodImage.image = image
+        
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    var imagePath : String {
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        if let documentDirectory = paths.first {
+            let imageName = "imageId\(detailedFood.id)"
+            return documentDirectory.appending(imageName)
+        } else {
+            fatalError("No documents directory")
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func favoriteSwitch(_ sender: UISwitch) {
