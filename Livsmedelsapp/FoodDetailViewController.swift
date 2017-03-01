@@ -107,7 +107,7 @@ class FoodDetailViewController: UIViewController, UIImagePickerControllerDelegat
         proteinValue.text = String(detailedFood.protein)
         fatValue.text = String(detailedFood.fat)
         kolhydraterValue.text = String(detailedFood.carbo)
-        nutritionScoreValue.text = String(detailedFood.nutritionScore)
+        nutritionScoreValue.text = String(format: "%.1f", detailedFood.nutritionScore)
     }
     
     func isFavorited() {
