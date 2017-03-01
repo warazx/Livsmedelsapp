@@ -18,6 +18,7 @@ class FoodDetailViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var fatValue: UILabel!
     @IBOutlet weak var kolhydraterValue: UILabel!
     @IBOutlet weak var foodImage: UIImageView!
+    @IBOutlet weak var nutritionScoreValue: UILabel!
     
     var id : Int = 0
     var detailedFood : Food = Food(name: "")
@@ -106,6 +107,7 @@ class FoodDetailViewController: UIViewController, UIImagePickerControllerDelegat
         proteinValue.text = String(detailedFood.protein)
         fatValue.text = String(detailedFood.fat)
         kolhydraterValue.text = String(detailedFood.carbo)
+        nutritionScoreValue.text = String(detailedFood.nutritionScore)
     }
     
     func isFavorited() {

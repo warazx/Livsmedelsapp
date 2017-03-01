@@ -22,4 +22,10 @@ class Food {
         self.id = id
         self.value = value
     }
+    
+    var nutritionScore: Double {
+        get {
+            return ((self.fat + self.carbo + self.protein) / 3.0)
+        }
+    }
 }
