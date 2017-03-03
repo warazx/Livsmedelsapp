@@ -11,19 +11,25 @@ import UIKit
 class MainViewController: UIViewController {
 
     @IBOutlet weak var searchField: UITextField!
+    @IBOutlet weak var uiBox: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        animateOnLoad()
         // Do any additional setup after loading the view.
+    }
+    
+    func animateOnLoad() {
+        uiBox.center.y -= view.bounds.height
+        UIView.animate(withDuration: 0.75) {
+            self.uiBox.center.y += self.view.bounds.height
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
     
     // MARK: - Navigation
     

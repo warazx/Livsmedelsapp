@@ -6,15 +6,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Livsmedelsapp/FoodTableViewController.swift"
-            timestampString = "509396298.19362"
+            timestampString = "510224245.626195"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -22,7 +22,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Livsmedelsapp/ApiHelper.swift"
@@ -33,6 +33,54 @@
             endingLineNumber = "59"
             landmarkName = "getFoodFromId(_:onDataFunc:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Livsmedelsapp/FoodTableViewController.swift"
+            timestampString = "510224591.890403"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Livsmedelsapp.FoodTableViewController.viewDidLoad () -&gt; ()"
+                  moduleName = "Livsmedelsapp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/christiankarlsson/Documents/Xcode%20Projects/Livsmedelsapp/Livsmedelsapp/FoodTableViewController.swift"
+                  timestampString = "510224591.898773"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "1256">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Livsmedelsapp.FoodTableViewController.(viewDidLoad () -&gt; ()).(closure #1)"
+                  moduleName = "Livsmedelsapp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/christiankarlsson/Documents/Xcode%20Projects/Livsmedelsapp/Livsmedelsapp/FoodTableViewController.swift"
+                  timestampString = "510224591.902436"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "19">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

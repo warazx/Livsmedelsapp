@@ -10,8 +10,6 @@ import UIKit
 
 class FoodTableViewController: UITableViewController, UISearchResultsUpdating {
     
-    
-    
     var foods : [Food] = []
     let apiHelper = ApiHelper()
     var searchString : String = ""

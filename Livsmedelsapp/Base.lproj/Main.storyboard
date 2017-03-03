@@ -86,6 +86,7 @@
                     <navigationItem key="navigationItem" id="SFF-1K-Kes"/>
                     <connections>
                         <outlet property="searchField" destination="edn-qk-qGe" id="trn-9c-NFY"/>
+                        <outlet property="uiBox" destination="LcB-EZ-LzK" id="Hgr-J3-DnZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E6G-fg-Ma4" userLabel="First Responder" sceneMemberID="firstResponder"/>
