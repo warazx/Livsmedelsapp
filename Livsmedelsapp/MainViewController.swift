@@ -59,6 +59,9 @@ class MainViewController: UIViewController {
         if segue.identifier == "FavoriteSegue", let destination = segue.destination as? FoodTableViewController {
             destination.favoriteMode = true
         }
+        if segue.identifier == "CompareSegue", let destination = segue.destination as? FoodTableViewController {
+            destination.favoriteMode = true
+        }
     }
 
 }

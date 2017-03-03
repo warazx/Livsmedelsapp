@@ -26,7 +26,6 @@ class FoodTableViewController: UITableViewController, UISearchResultsUpdating {
         searchController.dimsBackgroundDuringPresentation = false
         tableView.tableHeaderView = searchController.searchBar
         
-        
         self.title = searchString
         
         if !favoriteMode {
