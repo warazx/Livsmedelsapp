@@ -238,25 +238,46 @@
                                     <constraint firstItem="6qZ-Lh-kJN" firstAttribute="leading" secondItem="M82-jg-dnd" secondAttribute="leading" id="W0D-iP-sEA"/>
                                 </constraints>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="TQ6-Cr-Cr2">
+                                <rect key="frame" x="163.5" y="372" width="139.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="GCJ-WS-8dS">
+                                <rect key="frame" x="16" y="372" width="139.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="oAu-Pj-B8w" firstAttribute="width" secondItem="sgZ-rl-d8B" secondAttribute="width" id="6bl-qU-BY0"/>
                             <constraint firstItem="M82-jg-dnd" firstAttribute="leading" secondItem="Aaz-cG-fRy" secondAttribute="leadingMargin" id="NKG-F8-Oq7"/>
+                            <constraint firstItem="TQ6-Cr-Cr2" firstAttribute="top" secondItem="M82-jg-dnd" secondAttribute="bottom" constant="8" symbolic="YES" id="O2K-Gk-rKV"/>
+                            <constraint firstItem="GCJ-WS-8dS" firstAttribute="leading" secondItem="Aaz-cG-fRy" secondAttribute="leadingMargin" id="OZM-fO-Hhk"/>
                             <constraint firstItem="oAu-Pj-B8w" firstAttribute="top" secondItem="h0G-uy-ay8" secondAttribute="bottom" constant="8" symbolic="YES" id="PWa-9f-n7f"/>
+                            <constraint firstItem="TQ6-Cr-Cr2" firstAttribute="width" secondItem="GCJ-WS-8dS" secondAttribute="width" id="Vaq-u2-3AR"/>
+                            <constraint firstItem="TQ6-Cr-Cr2" firstAttribute="top" secondItem="M82-jg-dnd" secondAttribute="bottom" constant="8" symbolic="YES" id="VgR-2Y-c7X"/>
                             <constraint firstItem="sgZ-rl-d8B" firstAttribute="leading" secondItem="oAu-Pj-B8w" secondAttribute="trailing" constant="8" symbolic="YES" id="W74-vJ-lXU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TQ6-Cr-Cr2" secondAttribute="trailing" constant="1" id="Xda-Rh-UcQ"/>
                             <constraint firstItem="M82-jg-dnd" firstAttribute="leading" secondItem="Aaz-cG-fRy" secondAttribute="leadingMargin" id="ZOU-w2-pNq"/>
                             <constraint firstItem="M82-jg-dnd" firstAttribute="trailing" secondItem="Aaz-cG-fRy" secondAttribute="trailingMargin" id="ZQp-dZ-95V"/>
                             <constraint firstItem="sgZ-rl-d8B" firstAttribute="top" secondItem="h0G-uy-ay8" secondAttribute="bottom" constant="8" symbolic="YES" id="aKi-ql-MRl"/>
                             <constraint firstItem="M82-jg-dnd" firstAttribute="top" secondItem="sgZ-rl-d8B" secondAttribute="bottom" constant="8" symbolic="YES" id="bvj-Uw-kGE"/>
+                            <constraint firstItem="TQ6-Cr-Cr2" firstAttribute="leading" secondItem="GCJ-WS-8dS" secondAttribute="trailing" constant="8" symbolic="YES" id="krV-JM-l5o"/>
                             <constraint firstItem="M82-jg-dnd" firstAttribute="top" secondItem="sgZ-rl-d8B" secondAttribute="bottom" constant="8" symbolic="YES" id="mi7-Cc-ps8"/>
                             <constraint firstItem="sgZ-rl-d8B" firstAttribute="trailing" secondItem="Aaz-cG-fRy" secondAttribute="trailingMargin" id="oPw-va-E5H"/>
                             <constraint firstItem="oAu-Pj-B8w" firstAttribute="leading" secondItem="Aaz-cG-fRy" secondAttribute="leadingMargin" id="tJ5-gt-c1C"/>
+                            <constraint firstItem="GCJ-WS-8dS" firstAttribute="top" secondItem="M82-jg-dnd" secondAttribute="bottom" constant="8" symbolic="YES" id="x7e-Yw-VRm"/>
                             <constraint firstItem="M82-jg-dnd" firstAttribute="trailing" secondItem="Aaz-cG-fRy" secondAttribute="trailingMargin" id="zCs-j0-4sF"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="foodDiagram" destination="6qZ-Lh-kJN" id="WqV-8L-Ks2"/>
+                        <outlet property="foodOneLabel" destination="GCJ-WS-8dS" id="xUZ-Dk-tXj"/>
+                        <outlet property="foodTwoLabel" destination="TQ6-Cr-Cr2" id="mfV-Fd-fbA"/>
                         <outlet property="pickerOne" destination="oAu-Pj-B8w" id="MSD-uf-uRG"/>
                         <outlet property="pickerTwo" destination="sgZ-rl-d8B" id="kjN-YX-MfF"/>
                     </connections>

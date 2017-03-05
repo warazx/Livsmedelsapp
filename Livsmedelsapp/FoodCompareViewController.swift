@@ -11,8 +11,9 @@ import UIKit
 class FoodCompareViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     @IBOutlet weak var pickerOne: UIPickerView!
     @IBOutlet weak var pickerTwo: UIPickerView!
+    @IBOutlet weak var foodOneLabel: UILabel!
+    @IBOutlet weak var foodTwoLabel: UILabel!
     @IBOutlet weak var foodDiagram: FoodDiagram!
-    
     var foods : [Food] = []
     let apiHelper = ApiHelper()
     let savedOptions = SavedOptions()
@@ -33,8 +34,6 @@ class FoodCompareViewController: UIViewController, UIPickerViewDataSource, UIPic
                 self.pickerTwo.reloadAllComponents()
             }
         }
-        
-        // Do any additional setup after loading the view.
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -50,26 +49,11 @@ class FoodCompareViewController: UIViewController, UIPickerViewDataSource, UIPic
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == pickerOne {
             foodDiagram.foodOne = foods[row]
+            foodOneLabel.text = foods[row].name
         } else {
             foodDiagram.foodTwo = foods[row]
+            foodTwoLabel.text = foods[row].name
         }
         foodDiagram.setNeedsDisplay()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
