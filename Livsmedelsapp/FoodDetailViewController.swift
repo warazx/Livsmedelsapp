@@ -103,10 +103,10 @@ class FoodDetailViewController: UIViewController, UIImagePickerControllerDelegat
     
     func updateText() {
         foodName.text = detailedFood.name
-        kcalValue.text = String(detailedFood.value)
+        kcalValue.text = String(detailedFood.calories)
         proteinValue.text = String(detailedFood.protein)
         fatValue.text = String(detailedFood.fat)
-        kolhydraterValue.text = String(detailedFood.carbo)
+        kolhydraterValue.text = String(detailedFood.carbohydrates)
         nutritionScoreValue.text = String(format: "%.1f", detailedFood.nutritionScore)
     }
     

@@ -19,8 +19,8 @@ class FoodDiagram: UIView {
     override func draw(_ rect: CGRect) {
         var maxHeightForStaple : Double {
             get {
-                return [foodOne.carbo, foodOne.fat, foodOne
-                    .protein, foodOne.nutritionScore, foodTwo.carbo, foodTwo.fat, foodTwo.protein, foodTwo.nutritionScore].max()!
+                return [foodOne.carbohydrates, foodOne.fat, foodOne
+                    .protein, foodOne.nutritionScore, foodTwo.carbohydrates, foodTwo.fat, foodTwo.protein, foodTwo.nutritionScore].max()!
             }
         }
         let maxHeight = Double(rect.height)
@@ -30,8 +30,8 @@ class FoodDiagram: UIView {
         for staple in 0..<maxStaples {
             var height = 0.0
             switch staple {
-            case 0: height = foodOne.carbo
-            case 1: height = foodTwo.carbo
+            case 0: height = foodOne.carbohydrates
+            case 1: height = foodTwo.carbohydrates
             case 2: height = foodOne.fat
             case 3: height = foodTwo.fat
             case 4: height = foodOne.protein

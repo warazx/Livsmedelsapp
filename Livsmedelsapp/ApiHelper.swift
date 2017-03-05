@@ -69,10 +69,10 @@ class ApiHelper {
                         detailedFood.id = Int(foodJSON["number"]!.doubleValue)
                         detailedFood.name = (foodJSON["name"]?.stringValue)!
                         let nutrientValues = foodJSON["nutrientValues"]?.dictionaryValue
-                        detailedFood.value = (nutrientValues?["energyKcal"]?.doubleValue)!
+                        detailedFood.calories = (nutrientValues?["energyKcal"]?.doubleValue)!
                         detailedFood.protein = (nutrientValues?["protein"]?.doubleValue)!
                         detailedFood.fat = (nutrientValues?["fat"]?.doubleValue)!
-                        detailedFood.carbo = (nutrientValues?["carbohydrates"]?.doubleValue)!
+                        detailedFood.carbohydrates = (nutrientValues?["carbohydrates"]?.doubleValue)!
                     }
                 }
                 onDataFunc(detailedFood)

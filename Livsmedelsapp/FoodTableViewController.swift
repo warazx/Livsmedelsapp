@@ -33,7 +33,7 @@ class FoodTableViewController: UITableViewController, UISearchResultsUpdating {
                 self.foods = $0
                 for food in self.foods {
                     self.apiHelper.getKcalForId(id: food.id) {
-                        food.value = $0
+                        food.calories = $0
                         self.tableView.reloadData()
                     }
                 }
@@ -82,10 +82,10 @@ class FoodTableViewController: UITableViewController, UISearchResultsUpdating {
         
         if shouldUseSearchResult {
             cell.foodName.text = searchResult[indexPath.row].name
-            cell.foodValue.text = String(searchResult[indexPath.row].value)
+            cell.foodValue.text = String(searchResult[indexPath.row].calories)
         } else {
             cell.foodName.text = foods[indexPath.row].name
-            cell.foodValue.text = String(foods[indexPath.row].value)
+            cell.foodValue.text = String(foods[indexPath.row].calories)
         }
 
         return cell
