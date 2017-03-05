@@ -12,10 +12,27 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var searchField: UITextField!
     @IBOutlet weak var uiBox: UIStackView!
+    @IBOutlet weak var messageLabel: UILabel!
+    @IBOutlet weak var topView: UIView!
     
+    var dynamicAnimator : UIDynamicAnimator!
+    var collision : UICollisionBehavior!
+    var snap : UISnapBehavior!
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         animateOnLoad()
+        welcomeLabelDynamics()
+    }
+    
+    func welcomeLabelDynamics() {
+        dynamicAnimator = UIDynamicAnimator(referenceView: topView)
+        collision = UICollisionBehavior(items: [messageLabel])
+        collision.translatesReferenceBoundsIntoBoundary = true
+        dynamicAnimator.addBehavior(collision)
+        snap = UISnapBehavior(item: messageLabel, snapTo: topView.center)
+        snap.damping = 0.25
+        dynamicAnimator.addBehavior(snap)
     }
     
     func animateOnLoad() {
@@ -23,6 +40,11 @@ class MainViewController: UIViewController {
         UIView.animate(withDuration: 0.75) {
             self.uiBox.center.y += self.view.bounds.height
         }
+    }
+    
+    @IBAction func onTap(_ sender: UITapGestureRecognizer) {
+        snap.snapPoint = sender.location(in: topView)
+        NSLog("i work")
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String?, sender: Any?) -> Bool {

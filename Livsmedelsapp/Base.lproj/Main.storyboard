@@ -23,9 +23,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h1o-Bj-gaj" userLabel="SpaceTop">
+                            <view contentMode="scaleToFill" restorationIdentifier="spaceTop" translatesAutoresizingMaskIntoConstraints="NO" id="h1o-Bj-gaj" userLabel="SpaceTop">
                                 <rect key="frame" x="16" y="72" width="288" height="164"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Välkommen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCb-BO-EgX">
+                                        <rect key="frame" x="66" y="72" width="157" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="1" alpha="0.29818600171232879" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="tQF-AO-Q0m" appends="YES" id="sKu-kO-rei"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oq6-WY-12N" userLabel="SpaceButton">
                                 <rect key="frame" x="16" y="396" width="288" height="164"/>
@@ -96,11 +109,18 @@
                     </view>
                     <navigationItem key="navigationItem" id="SFF-1K-Kes"/>
                     <connections>
+                        <outlet property="messageLabel" destination="GCb-BO-EgX" id="Pc3-WV-gUf"/>
                         <outlet property="searchField" destination="edn-qk-qGe" id="trn-9c-NFY"/>
+                        <outlet property="topView" destination="h1o-Bj-gaj" id="qjV-z5-MZN"/>
                         <outlet property="uiBox" destination="LcB-EZ-LzK" id="Hgr-J3-DnZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E6G-fg-Ma4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="tQF-AO-Q0m">
+                    <connections>
+                        <action selector="onTap:" destination="avl-MR-AUI" id="FOa-1M-W5A"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="879.375" y="-136.26760563380282"/>
         </scene>
