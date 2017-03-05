@@ -16,7 +16,6 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         animateOnLoad()
-        // Do any additional setup after loading the view.
     }
     
     func animateOnLoad() {
@@ -25,13 +24,6 @@ class MainViewController: UIViewController {
             self.uiBox.center.y += self.view.bounds.height
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    // MARK: - Navigation
     
     override func shouldPerformSegue(withIdentifier identifier: String?, sender: Any?) -> Bool {
         if let ident = identifier {
@@ -45,11 +37,8 @@ class MainViewController: UIViewController {
         }
         return true
     }
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
         if segue.identifier == "SearchSegue", let destination = segue.destination as? FoodTableViewController {
             if let searchText = searchField.text {
                 destination.searchString = searchText
@@ -59,9 +48,5 @@ class MainViewController: UIViewController {
         if segue.identifier == "FavoriteSegue", let destination = segue.destination as? FoodTableViewController {
             destination.favoriteMode = true
         }
-        if segue.identifier == "CompareSegue", let destination = segue.destination as? FoodTableViewController {
-            destination.favoriteMode = true
-        }
     }
-
 }

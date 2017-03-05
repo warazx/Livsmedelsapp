@@ -18,13 +18,11 @@ class SavedOptions {
             userDefaults.removeObject(forKey: favorites)
             userDefaults.set(favArray, forKey: favorites)
             NSLog("Saved \(id) to favorites")
-            //currentFavorites()
         } else {
             let arrayOfFavorites : [Int] = [ id ]
             userDefaults.set(arrayOfFavorites, forKey: favorites)
             NSLog("Created favorites save")
             NSLog("Saved \(id) to favorites")
-            //currentFavorites()
         }
     }
     
@@ -35,7 +33,6 @@ class SavedOptions {
                 favArray.remove(at: favToRemove)
                 userDefaults.set(favArray, forKey: favorites)
                 NSLog("Removed \(id) from favorites")
-                //currentFavorites()
             }
         }
     }
@@ -57,14 +54,4 @@ class SavedOptions {
             return favArray
         }
     }
-    
-    /*func currentFavorites() {
-        let userDefaults = UserDefaults.standard
-        print("Current favorites:")
-        if let favArray = userDefaults.array(forKey: favorites) {
-            for n in favArray {
-                print(n)
-            }
-        }
-    }*/
 }
